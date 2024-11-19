@@ -1,0 +1,14 @@
+{
+    "cmake.useCMakePresets": "auto",
+    "cmake.options.advanced": {
+        "cpack": {
+            "statusBarVisibility": "hidden"
+        },
+        "packagePreset": {
+            "statusBarVisibility": "hidden"
+        },
+        "workflow": {
+            "statusBarVisibility": "compact"
+        }
+    }
+}
