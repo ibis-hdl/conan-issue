@@ -22,4 +22,4 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 USER vscode
-RUN pipx install install virtualenv conan
+RUN pipx install virtualenv conan
