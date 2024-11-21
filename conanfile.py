@@ -1,6 +1,9 @@
+# [Recipe tools](https://docs.conan.io/2/reference/tools.html)
 from conan import ConanFile
 from conan.tools.cmake import CMakeToolchain, CMakeDeps, cmake_layout
+from conan.tools.files import load, save
 import json
+import os
 
 class CompressorRecipe(ConanFile):
     # Binary configuration
@@ -20,8 +23,11 @@ class CompressorRecipe(ConanFile):
         tc = CMakeToolchain(self)
         tc.user_presets_path = "ConanCMakePresets.json"
         tc.generate()
-        # see: conan-io #16036, we'll use our own calculation
-        # https://pynative.com/python-json-load-and-loads-to-parse-json/
-        #presets = json.loads(json.load("ConanCMakePresets.json"))
-        #del presets["jobs"]
-        #json.save(self, "ConanCMakePresets.json", json.dumps(presets, indent=4))
+        # remove buildPresets/jobs since we'll use own calculation, see: conan-io #16036
+        conan_jobs = False
+        if(not conan_jobs):
+            presets = json.loads(load(self, "CMakePresets.json"))
+            for element in presets['buildPresets']:
+                if element.get("jobs") is not None:
+                    del element["jobs"]
+            save(self, "CMakePresets.json", json.dumps(presets, indent=4))

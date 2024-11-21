@@ -1,7 +1,6 @@
 {
     "version": 8,
     "include": [
-        "cmake/presets/os.json",
         "cmake/presets/gnuc.json",
         "cmake/presets/clang.json",
         "cmake/presets/clang-libcpp.json",

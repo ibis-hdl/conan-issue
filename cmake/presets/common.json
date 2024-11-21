@@ -1,5 +1,6 @@
 {
     "version": 8,
+    "include": [ "os.json" ],
     "configurePresets": [
         {
             "name": "cmake-default-configure-settings",
@@ -43,7 +44,7 @@
                 "ninja-default-settings"
             ],
             "cacheVariables": {
-                "CMAKE_CONFIGURATION_TYPES": "Debug;Release",
+                "CMAKE_CONFIGURATION_TYPES": "Debug;Release;RelWithDebInfo",
                 "CMAKE_DEFAULT_BUILD_TYPE": "Release"
             }
         },
