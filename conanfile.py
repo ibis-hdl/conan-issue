@@ -13,8 +13,8 @@ class CompressorRecipe(ConanFile):
         self.requires("catch2/3.7.1")
 
     def layout(self):
-        # see: conan.io #17324
-        #self.folders.build_folder_vars = ["settings.compiler", "settings.build_type"]
+        # see: conan.io #17324; must match "${buildPresets}" (cmake/presets/common.json)
+        self.folders.build_folder_vars = ["settings.compiler", "settings.build_type"]
         cmake_layout(self)
 
     def generate(self):

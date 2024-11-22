@@ -1,8 +1,11 @@
 ccache
+cmaketoolchain
+conanfile
 devcontainers
 gnuc
 libc
 libcpp
 msvc
 ptrace
+pwsh
 sccache

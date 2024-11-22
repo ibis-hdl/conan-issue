@@ -18,7 +18,7 @@
             "name": "ninja-default-settings",
             "description": "Common settings related to build tool Ninja.",
             "hidden": true,
-            "binaryDir": "${sourceDir}/build/",
+            "binaryDir": "${sourceDir}/build/${buildPresets}",
             "cacheVariables": {
                 "CMAKE_EXPORT_COMPILE_COMMANDS": true
             },

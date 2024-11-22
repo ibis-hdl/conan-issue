@@ -3,7 +3,7 @@
 import subprocess
 import platform
 import argparse
-import pathlib
+from pathlib import Path
 from multipledispatch import dispatch
 
 class ConanInstaller:
@@ -40,6 +40,7 @@ class ConanInstaller:
             self.conan_profile = arg.profile
         else:
             self.conan_profile = 'default'
+
         print(f"using conan profile '{self.conan_profile}'")
 
     """
@@ -52,10 +53,10 @@ class ConanInstaller:
     @see `conanfile.py` at generate().
     """
     def removeConanPresetsJson(self, file_name: str):
-        file_path = pathlib.Path(file_name)
+        file_path = Path(file_name)
         if file_path.exists():
             print(f"remove former generated Conan CMake preset '{file_name}'")
-            pathlib.Path(file_name).unlink(missing_ok=True)
+            Path(file_name).unlink(missing_ok=True)
 
     @dispatch(str, str)
     def install(self, build_type: str, conan_profile: str) -> None:
@@ -69,6 +70,7 @@ class ConanInstaller:
             f"--settings build_type={build_type}",
             f"--conf tools.cmake.cmaketoolchain:generator={self.generator}",
             f"--build=missing",
+            f"--output-folder=.",
             f"--profile:all={conan_profile}"
         ]
         cmd_line = f"conan install . " + f' '.join(cmd_args)
