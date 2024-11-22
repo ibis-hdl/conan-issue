@@ -10,5 +10,6 @@
         "workflow": {
             "statusBarVisibility": "compact"
         }
-    }
+    },
+    "cmake.allowCommentsInPresetsFile": false
 }

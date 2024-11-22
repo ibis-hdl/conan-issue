@@ -1,4 +1,4 @@
-project(github-action LANGUAGES CXX)
+project(conan-issue LANGUAGES CXX)
 
 add_executable(${PROJECT_NAME})
 

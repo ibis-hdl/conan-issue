@@ -13,6 +13,7 @@ RUN if [ "${REINSTALL_CMAKE_VERSION_FROM_SOURCE}" != "none" ]; then \
     fi \
     && rm -f /tmp/reinstall-cmake.sh
 
+# spell-checker: disable
 # devcontainer's cpp is shipped with tools (build-essential cmake, cppcheck, valgrind,
 # clang, lldb, llvm, gdb; vcpkg)
 RUN export DEBIAN_FRONTEND=noninteractive \
