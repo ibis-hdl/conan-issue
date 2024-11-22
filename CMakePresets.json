@@ -5,10 +5,16 @@
         "cmake/presets/clang.json",
         "cmake/presets/clang-libcpp.json",
         "cmake/presets/msvc.json",
-        "cmake/presets/msvc-cl.json",
-        "ConanCMakePresets.json"
+        "cmake/presets/msvc-cl.json"
     ],
     "configurePresets": [
+        {
+            "name": "conan-default",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "${sourceDir}/cmake/cmake-conan/conan_provider.cmake"
+            }
+        },
         {
             "name": "gcc",
             "displayName": "GnuC",
@@ -82,6 +88,14 @@
         }
     ],
     "buildPresets": [
+        {
+            "name": "conan-release",
+            "hidden": true
+        },
+        {
+            "name": "conan-debug",
+            "hidden": true
+        },
         {
             "name": "gcc-release",
             "displayName": "Release",
@@ -184,6 +198,14 @@
         }
     ],
     "testPresets": [
+        {
+            "name": "conan-release",
+            "hidden": true
+        },
+        {
+            "name": "conan-debug",
+            "hidden": true
+        },
         {
             "name": "test-gcc-release",
             "displayName": "Release",

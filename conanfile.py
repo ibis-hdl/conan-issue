@@ -14,7 +14,7 @@ class CompressorRecipe(ConanFile):
 
     def layout(self):
         # see: conan.io #17324
-        #self.folders.build_folder_vars = ["settings.compiler", "settings.build_type"]
+        self.folders.build_folder_vars = ["settings.compiler", "settings.build_type"]
         cmake_layout(self)
 
     def generate(self):
