@@ -3,7 +3,7 @@
 import subprocess
 import platform
 import argparse
-import pathlib
+from pathlib import Path
 from multipledispatch import dispatch
 
 class ConanInstaller:
@@ -52,10 +52,10 @@ class ConanInstaller:
     @see `conanfile.py` at generate().
     """
     def removeConanPresetsJson(self, file_name: str):
-        file_path = pathlib.Path(file_name)
+        file_path = Path(file_name)
         if file_path.exists():
             print(f"remove former generated Conan CMake preset '{file_name}'")
-            pathlib.Path(file_name).unlink(missing_ok=True)
+            Path(file_name).unlink(missing_ok=True)
 
     @dispatch(str, str)
     def install(self, build_type: str, conan_profile: str) -> None:
