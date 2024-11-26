@@ -9,7 +9,7 @@
     ],
     "configurePresets": [
         {
-            "name": "conan-default",
+            "name": "conan-provider",
             "hidden": true,
             "cacheVariables": {
                 "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "${sourceDir}/cmake/cmake-conan/conan_provider.cmake"
@@ -22,7 +22,7 @@
             "inherits": [
                 "condition-linux",
                 "ninja-multi-config",
-                "conan-default",
+                "conan-provider",
                 "cmake-default-configure-settings",
                 "default-install-settings",
                 "default-environment"
@@ -36,7 +36,7 @@
                 "condition-anyOf-linux-or-darwin",
                 "ninja-multi-config",
                 "clang-release-build-type",
-                "conan-default",
+                "conan-provider",
                 "cmake-default-configure-settings",
                 "default-install-settings",
                 "default-environment"
@@ -50,7 +50,7 @@
                 "condition-linux",
                 "ninja-multi-config",
                 "clang-libc++-release-build-type",
-                "conan-default",
+                "conan-provider",
                 "cmake-default-configure-settings",
                 "default-install-settings",
                 "default-environment"
@@ -65,7 +65,7 @@
                 "windows-x64-arch",
                 "ninja-multi-config",
                 "msvc-release-build-type",
-                "conan-default",
+                "conan-provider",
                 "cmake-default-configure-settings",
                 "default-install-settings",
                 "default-environment"
@@ -80,7 +80,7 @@
                 "windows-x64-arch",
                 "ninja-multi-config",
                 "msvc-clang-release-build-type",
-                "conan-default",
+                "conan-provider",
                 "cmake-default-configure-settings",
                 "default-install-settings",
                 "default-environment"
@@ -89,22 +89,12 @@
     ],
     "buildPresets": [
         {
-            "name": "conan-release",
-            "hidden": true
-        },
-        {
-            "name": "conan-debug",
-            "hidden": true
-        },
-        {
             "name": "gcc-release",
             "displayName": "Release",
             "description": "Release build with GnuC",
             "configuration": "Release",
             "configurePreset": "gcc",
-            "inherits": [
-                "conan-release"
-            ]
+            "inherits": []
         },
         {
             "name": "gcc-debug",
@@ -112,9 +102,7 @@
             "description": "Debug build with GnuC",
             "configuration": "Debug",
             "configurePreset": "gcc",
-            "inherits": [
-                "conan-debug"
-            ]
+            "inherits": []
         },
         {
             "name": "clang-release",
@@ -122,9 +110,7 @@
             "description": "Release build with Clang",
             "configuration": "Release",
             "configurePreset": "clang",
-            "inherits": [
-                "conan-release"
-            ]
+            "inherits": []
         },
         {
             "name": "clang-debug",
@@ -132,9 +118,7 @@
             "description": "Debug build with Clang",
             "configuration": "Debug",
             "configurePreset": "clang",
-            "inherits": [
-                "conan-debug"
-            ]
+            "inherits": []
         },
         {
             "name": "clang-libc++-release",
@@ -142,9 +126,7 @@
             "description": "Release build with Clang libc++",
             "configuration": "Release",
             "configurePreset": "clang-libc++",
-            "inherits": [
-                "conan-release"
-            ]
+            "inherits": []
         },
         {
             "name": "clang-libc++-debug",
@@ -152,9 +134,7 @@
             "description": "Debug build with Clang libc++",
             "configuration": "Debug",
             "configurePreset": "clang-libc++",
-            "inherits": [
-                "conan-debug"
-            ]
+            "inherits": []
         },
         {
             "name": "msvc-release",
@@ -162,9 +142,7 @@
             "description": "Release build with Microsoft Visual Studio",
             "configuration": "Release",
             "configurePreset": "msvc",
-            "inherits": [
-                "conan-release"
-            ]
+            "inherits": []
         },
         {
             "name": "msvc-debug",
@@ -172,9 +150,7 @@
             "description": "Debug build with Microsoft Visual Studio",
             "configuration": "Debug",
             "configurePreset": "msvc",
-            "inherits": [
-                "conan-debug"
-            ]
+            "inherits": []
         },
         {
             "name": "msvc-cl-release",
@@ -182,9 +158,7 @@
             "description": "Release build with Microsoft Visual Studio bundled Clang C++ compiler",
             "configuration": "Release",
             "configurePreset": "msvc-cl",
-            "inherits": [
-                "conan-release"
-            ]
+            "inherits": []
         },
         {
             "name": "msvc-cl-debug",
@@ -192,27 +166,17 @@
             "description": "Debug build with Microsoft Visual Studio bundled Clang C++ compiler",
             "configuration": "Debug",
             "configurePreset": "msvc-cl",
-            "inherits": [
-                "conan-debug"
-            ]
+            "inherits": []
         }
     ],
     "testPresets": [
         {
-            "name": "conan-release",
-            "hidden": true
-        },
-        {
-            "name": "conan-debug",
-            "hidden": true
-        },
-        {
             "name": "test-gcc-release",
             "displayName": "Release",
             "description": "Test GnuC build",
+            "configuration": "Release",
             "configurePreset": "gcc",
             "inherits": [
-                "conan-release",
                 "default-testPreset"
             ]
         },
@@ -220,9 +184,9 @@
             "name": "test-gcc-debug",
             "displayName": "Debug",
             "description": "Test GnuC build",
+            "configuration": "Debug",
             "configurePreset": "gcc",
             "inherits": [
-                "conan-debug",
                 "default-testPreset"
             ]
         },
@@ -230,9 +194,9 @@
             "name": "test-clang-release",
             "displayName": "Release",
             "description": "Test Clang build",
+            "configuration": "Release",
             "configurePreset": "clang",
             "inherits": [
-                "conan-release",
                 "default-testPreset"
             ]
         },
@@ -240,9 +204,9 @@
             "name": "test-clang-debug",
             "displayName": "Debug",
             "description": "Test Clang build",
+            "configuration": "Release",
             "configurePreset": "clang",
             "inherits": [
-                "conan-debug",
                 "default-testPreset"
             ]
         },
@@ -250,9 +214,9 @@
             "name": "test-clang-libc++-release",
             "displayName": "Release",
             "description": "Test Clang libc++ build",
+            "configuration": "Release",
             "configurePreset": "clang-libc++",
             "inherits": [
-                "conan-release",
                 "default-testPreset"
             ]
         },
@@ -260,9 +224,9 @@
             "name": "test-clang-libc++-debug",
             "displayName": "Debug",
             "description": "Test Clang libc++ build",
+            "configuration": "Release",
             "configurePreset": "clang-libc++",
             "inherits": [
-                "conan-debug",
                 "default-testPreset"
             ]
         },
@@ -270,9 +234,9 @@
             "name": "test-msvc-release",
             "displayName": "Release",
             "description": "Test Microsoft Visual Studio build",
+            "configuration": "Release",
             "configurePreset": "msvc",
             "inherits": [
-                "conan-release",
                 "default-testPreset"
             ]
         },
@@ -280,9 +244,9 @@
             "name": "test-msvc-debug",
             "displayName": "Debug",
             "description": "Test Microsoft Visual Studio build",
+            "configuration": "Release",
             "configurePreset": "msvc",
             "inherits": [
-                "conan-debug",
                 "default-testPreset"
             ]
         },
@@ -290,9 +254,9 @@
             "name": "test-msvc-cl-release",
             "displayName": "Release",
             "description": "Test Microsoft Visual Studio bundled Clang build",
+            "configuration": "Release",
             "configurePreset": "msvc-cl",
             "inherits": [
-                "conan-release",
                 "default-testPreset"
             ]
         },
@@ -300,9 +264,9 @@
             "name": "test-msvc-cl-debug",
             "displayName": "Debug",
             "description": "Test Microsoft Visual Studio bundled Clang build",
+            "configuration": "Release",
             "configurePreset": "msvc-cl",
             "inherits": [
-                "conan-debug",
                 "default-testPreset"
             ]
         }
@@ -311,86 +275,86 @@
         {
             "name": "GnuC Debug",
             "steps": [
-              {
-                "type": "configure",
-                "name": "gcc"
-              },
-              {
-                "type": "build",
-                "name": "gcc-debug"
-              },
-              {
-                "type": "test",
-                "name": "test-gcc-debug"
-              }
+                {
+                    "type": "configure",
+                    "name": "gcc"
+                },
+                {
+                    "type": "build",
+                    "name": "gcc-debug"
+                },
+                {
+                    "type": "test",
+                    "name": "test-gcc-debug"
+                }
             ]
         },
         {
             "name": "GnuC Release",
             "steps": [
-              {
-                "type": "configure",
-                "name": "gcc"
-              },
-              {
-                "type": "build",
-                "name": "gcc-release"
-              },
-              {
-                "type": "test",
-                "name": "test-gcc-release"
-              }
+                {
+                    "type": "configure",
+                    "name": "gcc"
+                },
+                {
+                    "type": "build",
+                    "name": "gcc-release"
+                },
+                {
+                    "type": "test",
+                    "name": "test-gcc-release"
+                }
             ]
         },
         {
             "name": "Clang Release",
             "steps": [
-              {
-                "type": "configure",
-                "name": "clang"
-              },
-              {
-                "type": "build",
-                "name": "clang-release"
-              },
-              {
-                "type": "test",
-                "name": "test-clang-release"
-              }
+                {
+                    "type": "configure",
+                    "name": "clang"
+                },
+                {
+                    "type": "build",
+                    "name": "clang-release"
+                },
+                {
+                    "type": "test",
+                    "name": "test-clang-release"
+                }
             ]
         },
         {
             "name": "Clang libc++ Release",
             "steps": [
-              {
-                "type": "configure",
-                "name": "clang-libc++"
-              },
-              {
-                "type": "build",
-                "name": "clang-libc++-release"
-              },
-              {
-                "type": "test",
-                "name": "test-clang-libc++-release"
-              }
+                {
+                    "type": "configure",
+                    "name": "clang-libc++"
+                },
+                {
+                    "type": "build",
+                    "name": "clang-libc++-release"
+                },
+                {
+                    "type": "test",
+                    "name": "test-clang-libc++-release"
+                }
             ]
         },
         {
             "name": "MSVC Release",
             "steps": [
-              {
-                "type": "configure",
-                "name": "msvc"
-              },
-              {
-                "type": "build",
-                "name": "msvc-release"
-              },
-              {
-                "type": "test",
-                "name": "test-msvc-release"
-              }
+                {
+                    "type": "configure",
+                    "name": "msvc"
+                },
+                {
+                    "type": "build",
+                    "name": "msvc-release"
+                },
+                {
+                    "type": "test",
+                    "name": "test-msvc-release"
+                }
             ]
         }
     ]
